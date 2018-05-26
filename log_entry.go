@@ -11,7 +11,21 @@ type Agent APIObject
 
 // Channel is the means by which the action was carried out.
 type Channel struct {
-	Type string
+	Type       string
+	Details    ChannelDetails
+	CefDetails CefDetails `json:"cef_details,omitempty"`
+}
+
+type ChannelDetails struct {
+	Body string
+	Tags string
+}
+
+type CefDetails struct {
+	Details        ChannelDetails
+	SourceLocation string `json:"source_location,omitempty"`
+	SourceOrigin   string `json:"source_origin,omitempty"`
+	ServiceGroup   string `json:"service_group,omitempty"`
 }
 
 // Context are to be included with the trigger such as links to graphs or images.
